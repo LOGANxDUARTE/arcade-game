@@ -1,0 +1,79 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+#app {
+    /* display: flex; */
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 1fr 3fr 1fr;
+    /* grid-gap: 1px 50px; */
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(to left, #0f2027, #203a43, #2c5364);
+}
+
+h1 {
+    grid-row: 1;
+    grid-column: 2;
+    padding-top: 25px;
+    /* color: white; */
+    justify-self: center;
+
+    text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #c7f1bb, 0 0 30px #c7f1bb, 0 0 40px #c7f1bb, 0 0 55px #c7f1bb, 0 0 75px #c7f1bb;
+    color: #709177;
+    font-size: 60pt;
+    letter-spacing: 5pt;
+}
+
+p {
+    grid-row: 1;
+    grid-column: 2;
+    align-self: end;
+    justify-self: center;
+    padding-bottom: 10px;
+    color: white;
+}
+
+.leftSnek {
+    /* margin-left: 300px; */
+    grid-row: 1;
+    grid-column: 3;
+    height: 175%;
+    padding: 25px;
+}
+
+.rightSnek {
+    transform: scaleX(-1);
+    grid-row: 1;
+    grid-column: 1;
+    height: 175%;
+    padding: 25px;
+
+}
+
+#canvas {
+    margin: auto; 
+    height: 450px;
+    width: 300px;
+
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(30, 1fr);
+    grid-row: 2;
+    grid-column: 2;
+    background-color: lightgray;
+    border: 2px solid green;
+}
+
+.apple {
+    background-color: rgb(116, 5, 5);
+    border-radius: 50%;
+}
+
+.snake {
+    background-color: green;
+    border-radius: 30%;
+    border: 1px solid olive;
+}

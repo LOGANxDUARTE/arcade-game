@@ -1,7 +1,11 @@
 // OUR INITIAL STATE
 
 let gameState = {
-  canvas: new Array(30).fill(new Array(20).fill(''))
+  canvas: new Array(30).fill(new Array(20).fill('')),
+  player: {
+    name: '',
+    points: 0
+  }
 }
 
 let snake;
@@ -18,14 +22,23 @@ let isGameRunning = false;
 function endGame() {
   clearInterval(game)
   isGameRunning = false;
+  clearScore()
+}
+
+// RESET THE SCORE
+function clearScore() {
+  alert(`GAME OVER! Your Snek ate ${gameState.player.points} apples!`)
+  gameState.player.points = 0;
+  $('#score').text(gameState.player.points)
 }
 
 // MAINTAINING GAME STATE
 function buildInitialState() {
   isGameRunning = true;
   resetSnake();
-  game = setInterval(tick, 200);
+  game = setInterval(tick, 140);
   renderState();
+  // requestPlayerName()
   buildSnake();
   buildApple();
 }
@@ -47,6 +60,7 @@ function renderState() {
 
 // BUILDING THE SNAKE
 function buildSnake() {
+
   $(".segment").removeClass("snake");
   
   const snakeHead = snake.body[0];
@@ -71,6 +85,8 @@ function buildSnake() {
     const newSnakeTailY = snakeTailY + snake.nextDirection[1];
     const newSnakeTail = [newSnakeTailX, newSnakeTailY];
     snake.body.push(newSnakeTail);
+    gameState.player.points++
+    $('#score').text(gameState.player.points)
     buildApple();
   }
 
